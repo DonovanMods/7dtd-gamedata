@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blocks defaultDescriptionKey="creativeMenuBlockGroupDesc">
+  <block name="terrStone">
+    <property name="TerrainIndex" value="1" />
+    <property name="CanMobsSpawnOn" value="true" />
+    <property name="DisplayType" value="blockTerrain" />
+    <property name="Map.Color" value="100,100,100" />
+    <property name="Material" value="Mstone" />
+    <property name="Shape" value="Terrain" />
+    <property name="Mesh" value="terrain" />
+    <property name="Texture" value="1" />
+    <property name="ImposterExclude" value="true" />
+    <property name="LPHardnessScale" value="2" />
+    <property name="EconomicValue" value="5" />
+    <property name="EconomicBundleSize" value="1" />
+    <property name="SellableToTrader" value="false" />
+    <property name="Weight" value="125" />
+    <property name="NoScrapping" value="true" />
+    <property class="RepairItems">
+      <property name="resourceCobblestones" value="6" />
+    </property>
+    <property name="SortOrder1" value="0000" />
+    <property name="SortOrder2" value="0100" />
+    <property name="FilterTags" value="MC_outdoor,SC_terrain" />
+    <drop event="Harvest" name="resourceRockSmall" count="55" tag="oreWoodHarvest" />
+    <drop event="Destroy" count="0" />
+    <drop event="Fall" name="resourceRockSmall" count="44" prob="0.23" stick_chance="0" />
+    <drop event="Fall" name="terrDestroyedStone" count="1" prob="0.1" stick_chance="0.5" />
+  </block>
+  <block name="woodShapes" shapes="All">
+    <property name="DescriptionKey" value="woodGroupDesc" />
+    <property name="Material" value="Mwood_shapes" />
+    <property name="Shape" value="New" />
+    <property name="Texture" value="241" />
+    <property name="UiBackgroundTexture" value="241" />
+    <property name="FuelValue" value="500" />
+    <property name="EconomicValue" value="10" />
+    <property name="EconomicBundleSize" value="20" />
+    <property class="RepairItems">
+      <property name="resourceWood" value="3" />
+    </property>
+    <property class="UpgradeBlock">
+      <property name="ToBlock" value="cobblestoneShapes" />
+      <property name="Item" value="resourceCobblestones" />
+      <property name="ItemCount" value="10" />
+      <property name="UpgradeHitCount" value="4" />
+    </property>
+    <property name="UpgradeSound" value="place_block_wood" />
+    <property name="SortOrder1" value="S000" />
+    <property name="Group" value="Building,advBuilding" />
+    <property name="Tags" value="wood" />
+    <property name="FilterTags" value="MC_Shapes" />
+    <drop event="Harvest" name="resourceWood" count="2" tag="allHarvest,lumberjackHarvest" />
+    <drop event="Destroy" count="0" />
+    <drop event="Fall" name="terrDestroyedWoodDebris" count="1" prob="0.75" stick_chance="1" />
+  </block>
+</blocks>

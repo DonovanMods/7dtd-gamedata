@@ -17,6 +17,10 @@ func TestRemoveClosingXMLTags(t *testing.T) {
 			expected: "<tag />",
 		},
 		{
+			input:    "<tag_name></tag_name>",
+			expected: "<tag_name />",
+		},
+		{
 			input:    "<tag1>testing</tag1>",
 			expected: "<tag1>testing</tag1>",
 		},
@@ -96,6 +100,10 @@ func TestRemoveClosingXMLTagsCompact(t *testing.T) {
 		{
 			input:    "<tag></tag>",
 			expected: "<tag/>",
+		},
+		{
+			input:    "<tag_name></tag_name>",
+			expected: "<tag_name/>",
 		},
 		{
 			input:    "<tag1>testing</tag1>",

@@ -11,18 +11,18 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-//go:embed testdata/blocks_in.xml
-var inputBlocksXML string
+//go:embed testdata/entityclasses_in.xml
+var inputEntityClassesXML string
 
-//go:embed testdata/blocks_out.xml
-var outputBlocksXML string
+//go:embed testdata/entityclasses_out.xml
+var outputEntityClassesXML string
 
 // TestBlockXML tests the XML encoding and decoding of a Block.
-func TestBlocksXML(t *testing.T) {
+func TestEntityClassesXML(t *testing.T) {
 	// Decode the XML data into a Block value.
-	var blocks gamexml.Blocks
+	var entityclasses gamexml.EntityClasses
 
-	if err := xml.NewDecoder(strings.NewReader(inputBlocksXML)).Decode(&blocks); err != nil {
+	if err := xml.NewDecoder(strings.NewReader(inputEntityClassesXML)).Decode(&entityclasses); err != nil {
 		t.Fatal(err)
 	}
 
@@ -30,11 +30,11 @@ func TestBlocksXML(t *testing.T) {
 	var buf strings.Builder
 	enc := xml.NewEncoder(&buf)
 	enc.Indent("", "  ")
-	if err := enc.Encode(blocks); err != nil {
+	if err := enc.Encode(entityclasses); err != nil {
 		t.Fatal(err)
 	}
 
-	expected := outputBlocksXML
+	expected := outputEntityClassesXML
 	actual := xml.Header + xmltools.RemoveClosingXMLTags(buf.String()) + "\n"
 
 	assert.Equal(t, expected, actual, "Expected XML output to match")

@@ -15,8 +15,13 @@ check: fmt
 check-all: fmt-all
 	trunk check --all
 
-test:
-	go test ./...
+SUBDIRS := $(wildcard **/*_test.go **/**/*_test.go)
+
+test: $(SUBDIRS)
+$(SUBDIRS):
+	go test $@
+
+.PHONY: test $(SUBDIRS)
 
 update: upgrade
 upgrade: tidy

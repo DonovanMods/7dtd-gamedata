@@ -33,7 +33,7 @@ func removeClosingXMLTags(xml string, compact bool) string {
 		closingTag = " />"
 	}
 
-	re := regexp.MustCompile("></[[:alnum:]]*>")
+	re := regexp.MustCompile(`></\b\w+\b>`)
 
 	return re.ReplaceAllString(string(xml), closingTag)
 }

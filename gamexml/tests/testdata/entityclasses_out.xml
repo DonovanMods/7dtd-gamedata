@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity_classes>
+  <entity_class name="playerNewMale">
+    <property name="Class" value="EntityNewStyleAvatar" />
+    <property name="UserSpawnType" value="None" />
+    <property name="Tags" value="entity,player,human" />
+    <property name="Prefab" value="/Entities/Player/Male/malePrefab" />
+    <property name="Parent" value="Players" />
+    <property name="IsMale" value="true" />
+  </entity_class>
+  <entity_class name="playerMale">
+    <property name="Class" value="EntityPlayer" />
+    <property name="UserSpawnType" value="None" />
+    <property name="EntityFlags" value="player,edible" />
+    <property name="EntityType" value="Player" />
+    <property name="Tags" value="entity,player,human" />
+    <property name="ModelType" value="SDCS" />
+    <property name="PhysicsBody" value="PlayerSDCS" />
+    <property name="AvatarController" value="AvatarSDCSController" />
+    <property name="Prefab" value="Player" />
+    <property name="Mass" value="180" />
+    <property name="HasDeathAnim" value="false" />
+    <property name="HasRagdoll" value="true" />
+    <property name="RagdollOnDeathChance" value="0" />
+    <property name="LocalAvatarController" value="AvatarLocalPlayerController" />
+    <property name="Parent" value="Players" />
+    <property name="CrouchYOffsetFP" value="-0.65" />
+    <property name="IsMale" value="true" />
+    <property name="TimeStayAfterDeath" value="10" />
+    <property name="SurfaceCategory" value="organic" />
+    <property name="PushFactor" value="5" />
+    <property name="Weight" value="70" />
+    <property name="ParticleOnDeath" value="blood_death" />
+    <property name="SoundHurt" value="player1painlg" />
+    <property name="SoundHurtSmall" value="player1painsm" />
+    <property name="SoundDeath" value="player1death" />
+    <property name="SoundStamina" value="player1stamina" />
+    <property name="SoundDrownPain" value="player1drownpain" />
+    <property name="SoundWaterSurface" value="player1drownsurface" />
+    <property name="SoundDrownDeath" value="player1drowndeath" />
+    <property name="SoundJump" value="player1Jump" />
+    <property name="SoundLandSoft" value="player1LandSoft" />
+    <property name="SoundLandHard" value="player1LandHard" />
+    <property name="SoundPlayerLandThump" value="PlayerLandThump" />
+    <property name="MapIcon" value="ui_game_symbol_map_player_arrow" />
+    <property name="NavObject" value="party,ally,player" />
+    <property name="TrackerIcon" value="ui_game_symbol_run" />
+    <property name="IsEnemyEntity" value="false" />
+    <property name="DropInventoryBlock" value="cntBackpackDropped" />
+    <property name="ItemsOnEnterGame.GameModeSurvival" value="drinkJarBoiledWater=2,foodCanChili,medicalFirstAidBandage,meleeToolTorch,noteDuke01" />
+    <property name="ItemsOnEnterGame.GameModeSurvivalSP" value="drinkJarBoiledWater,foodCanChili,medicalFirstAidBandage,meleeToolTorch" />
+    <property name="ItemsOnEnterGame.GameModeSurvivalMP" value="drinkJarBoiledWater,foodCanChili,medicalFirstAidBandage,meleeToolTorch" />
+    <property name="ExperienceGain" value="130" />
+    <property name="LegsExplosionDamageMultiplier" value=".41" />
+    <property name="ArmsExplosionDamageMultiplier" value=".41" />
+    <property name="HeadExplosionDamageMultiplier" value=".41" />
+    <property name="ChestExplosionDamageMultiplier" value=".41" />
+    <property name="Buffs" value="buffStatusCheck01,buffStatusCheck02" />
+    <property name="HandItem" value="meleeHandPlayer" />
+    <effect_group>
+      <passive_effect name="HealthMax" operation="base_set" value="100" />
+      <passive_effect name="StaminaMax" operation="base_set" value="100" />
+      <passive_effect name="WaterMax" operation="base_set" value="100" />
+      <passive_effect name="HealthChangeOT" operation="base_set" value="0.017">
+        <requirement name="NotHasBuff" buff="buffStatusHungry03" />
+        <requirement name="NotHasBuff" buff="buffStatusThirsty03" />
+      </passive_effect>
+      <passive_effect name="DamageModifier" operation="perc_set" value="1" />
+      <passive_effect name="DamageModifier" operation="perc_add" value="1" tags="head" />
+      <passive_effect name="DismemberChance" operation="base_set" value=".05" />
+      <passive_effect name="HarvestCount" operation="base_set" value="1" tags="allHarvest,oreWoodHarvest,cropHarvest,wildCropsHarvest" />
+      <passive_effect name="HarvestCount" operation="base_set" value="1" tags="allToolsHarvest" />
+      <passive_effect name="HarvestCount" operation="base_set" value=".5" tags="butcherHarvest" />
+      <passive_effect name="HarvestCount" operation="base_set" value="0" tags="WasteTreasuresAcidHarvest,WasteTreasuresCoffinHarvest,WasteTreasuresDoorHarvest" />
+      <passive_effect name="HarvestCount" operation="base_set" value="0" tags="artOfMiningLuckyStrikeHarvest,WasteTreasuresHoneyHarvest,WasteTreasuresSinkHarvest,WasteTreasuresCompleteHarvest,bonusCropHarvest,farmerBonusHarvest" />
+      <passive_effect name="WalkSpeed" operation="base_set" value="1.53" />
+      <passive_effect name="RunSpeed" operation="base_set" value="1.10" />
+      <passive_effect name="CrouchSpeed" operation="base_set" value="1.04" />
+      <passive_effect name="WalkSpeed" operation="base_set" value="1.38" tags="swimming" />
+      <passive_effect name="RunSpeed" operation="base_set" value="0.99" tags="swimming" />
+      <passive_effect name="Mobility" operation="base_set" value="1" />
+      <passive_effect name="JumpStrength" operation="base_set" value="0.16" />
+      <passive_effect name="JumpStrength" operation="base_set" value="0.08" tags="crouching">
+        <requirement name="ProgressionLevel" progression_name="perkUrbanCombatJumping" operation="Equals" value="0" />
+      </passive_effect>
+      <passive_effect name="StaminaChangeOT" operation="base_set" value="10" />
+    </effect_group>
+    <effect_group name="food/water balancing">
+      <passive_effect name="WaterLossPerHealthPointGained" operation="base_set" value="0.06" />
+      <passive_effect name="WaterChangeOT" operation="base_subtract" value=".0111" />
+      <passive_effect name="WaterChangeOT" operation="base_subtract" value="@_vehicleFood" tags="driving" />
+      <passive_effect name="WaterLossPerStaminaPointGained" operation="base_set" value="0.00453" />
+      <passive_effect name="FoodChangeOT" operation="base_subtract" value=".00833" />
+      <passive_effect name="FoodChangeOT" operation="base_subtract" value="@_vehicleFood" tags="driving" />
+      <passive_effect name="FoodLossPerStaminaPointGained" operation="base_set" value="0.00408" />
+    </effect_group>
+    <effect_group>
+      <requirement name="!EntityHasMovementTag" tags="idle" />
+      <passive_effect name="StaminaChangeOT" operation="perc_add" value="-1.45" tags="running" />
+      <passive_effect name="StaminaChangeOT" operation="perc_add" value="-.1" tags="floating" />
+      <passive_effect name="StaminaChangeOT" operation="perc_add" value="-1.15" tags="swimming" />
+      <passive_effect name="StaminaChangeOT" operation="perc_add" value="-1.9" tags="swimmingRun" />
+    </effect_group>
+    <effect_group>
+      <passive_effect name="StaminaChangeOT" operation="perc_add" value="1.35" tags="running">
+        <requirement name="ProgressionLevel" progression_name="perkGreatHeistSprintSneak" operation="Equals" value="1" />
+        <requirement name="CVarCompare" cvar="_crouching" operation="Equals" value="1" />
+      </passive_effect>
+      <passive_effect name="StaminaChangeOT" operation="perc_add" value="-.15" match_all_tags="true" tags="crouching,walking" />
+      <passive_effect name="BuffResistance" operation="base_set" value="1" tags="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffInfectionCatch,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo,buffInjuryBleedingBarbedWire" />
+      <passive_effect name="BuffResistance" operation="base_add" value="-.1" tags="buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo" />
+      <passive_effect name="StaminaLoss" operation="base_set" value="20" tags="jumping" />
+      <passive_effect name="StaminaLoss" operation="base_set" value="40" tags="swimming" />
+      <passive_effect name="SpreadMultiplierAiming" operation="base_set" value="1" />
+      <passive_effect name="SpreadMultiplierCrouching" operation="base_set" value="1" />
+      <passive_effect name="SpreadMultiplierHip" operation="base_set" value="1" />
+      <passive_effect name="SpreadMultiplierWalking" operation="base_set" value="1" />
+      <passive_effect name="SpreadMultiplierRunning" operation="base_set" value="1.05" />
+      <passive_effect name="SpreadMultiplierIdle" operation="base_set" value="1" />
+      <passive_effect name="DegradationPerUse" operation="base_set" value="1" />
+      <passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="1" />
+      <passive_effect name="CraftingTier" operation="base_set" value="1" />
+      <passive_effect name="CarryCapacity" operation="base_set" value="27" />
+      <passive_effect name="BagSize" operation="base_set" value="45" />
+      <passive_effect name="ProjectileStickChance" operation="base_set" value=".5" />
+      <passive_effect name="ProjectileStickChance" operation="perc_add" value="-2" tags="glass" />
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="5" tags="Upgrading" />
+      <triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" target="self" buff="buffCumChanceCH" />
+      <triggered_effect trigger="onSelfSecondaryActionStart" action="AddBuff" buff="buffPowerAttackStaminaStunt">
+        <requirement name="HoldingItemHasTags" tags="melee" />
+        <requirement name="!HoldingItemHasTags" tags="thrownWeapon" />
+      </triggered_effect>
+      <triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" buff="buffPowerAttackStaminaStunt">
+        <requirement name="HoldingItemHasTags" tags="melee" />
+        <requirement name="HoldingItemHasTags" tags="thrownWeapon" />
+      </triggered_effect>
+      <triggered_effect trigger="onSelfEnteredGame" action="AddBuff" target="self" buff="buffStatusCheck01,buffStatusCheck02" />
+      <triggered_effect trigger="onSelfRespawn" action="AddBuff" target="self" buff="buffStatusCheck01,buffStatusCheck02,buffNearDeathTraumaTrigger,buffDeathFoodDrinkAdjust" />
+    </effect_group>
+    <effect_group>
+      <requirement name="PlayerLevel" operation="LT" value="300" />
+      <passive_effect name="ExpDeficitPerDeathPercentage" operation="base_set" value=".25" />
+      <passive_effect name="ExpDeficitMaxPercentage" operation="base_set" value=".5" />
+    </effect_group>
+    <effect_group>
+      <requirement name="PlayerLevel" operation="GTE" value="300" />
+      <passive_effect name="ExpDeficitPerDeathPercentage" operation="base_set" value="0" />
+      <passive_effect name="ExpDeficitMaxPercentage" operation="base_set" value="0" />
+    </effect_group>
+  </entity_class>
+</entity_classes>
