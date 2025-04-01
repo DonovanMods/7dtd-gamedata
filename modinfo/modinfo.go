@@ -44,8 +44,33 @@ type ModInfo struct {
 	meta        modInfoMeta
 }
 
+func (M *ModInfo) SetName(name string) {
+	M.Name.Value = name
+}
+
+func (M *ModInfo) SetDisplayName(name string) {
+	M.DisplayName.Value = name
+}
+
+func (M *ModInfo) SetDescription(description string) {
+	M.Description.Value = description
+}
+
+func (M *ModInfo) SetAuthor(author string) {
+	M.Author.Value = author
+}
+
+func (M *ModInfo) SetVersion(version string, compatibility string) {
+	M.Version.Value = version
+	M.Version.Compat = compatibility
+}
+
+func (M *ModInfo) SetWebsite(website string) {
+	M.Website.Value = website
+}
+
 func (M *ModInfo) SetPath(path string) {
-	(*M).meta.path = path
+	M.meta.path = path
 }
 
 func (M *ModInfo) Path() string {
