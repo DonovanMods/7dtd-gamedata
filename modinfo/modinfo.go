@@ -20,6 +20,7 @@ import (
 	XML "encoding/xml"
 	"fmt"
 	"path/filepath"
+	"strings"
 
 	"github.com/donovanmods/7dtd-gamedata/xmltools"
 )
@@ -44,29 +45,72 @@ type ModInfo struct {
 	meta        modInfoMeta
 }
 
-func (M *ModInfo) SetName(name string) {
-	M.Name.Value = name
+func (M *ModInfo) GetValue(item string) string {
+	switch {
+	case strings.EqualFold(item, "name"):
+		return M.Name.Value
+	case strings.EqualFold(item, "displayname"):
+		return M.DisplayName.Value
+	case strings.EqualFold(item, "description"):
+		return M.Description.Value
+	case strings.EqualFold(item, "author"):
+		return M.Author.Value
+	case strings.EqualFold(item, "version"):
+		return M.Version.Value
+	case strings.EqualFold(item, "compat"):
+		return M.Version.Compat
+	case strings.EqualFold(item, "website"):
+		return M.Website.Value
+	default:
+		return ""
+	}
 }
 
-func (M *ModInfo) SetDisplayName(name string) {
-	M.DisplayName.Value = name
+func (M *ModInfo) SetValue(item string, value string) error {
+	switch {
+	case strings.EqualFold(item, "name"):
+		M.Name.Value = value
+	case strings.EqualFold(item, "displayname"):
+		M.DisplayName.Value = value
+	case strings.EqualFold(item, "description"):
+		M.DisplayName.Value = value
+	case strings.EqualFold(item, "author"):
+		M.Author.Value = value
+	case strings.EqualFold(item, "version"):
+		M.Version.Value = value
+	case strings.EqualFold(item, "compat"):
+		M.Version.Compat = value
+	case strings.EqualFold(item, "website"):
+		M.Website.Value = value
+	default:
+		return fmt.Errorf("unknown item: %s", item)
+	}
+	return nil
 }
 
-func (M *ModInfo) SetDescription(description string) {
-	M.Description.Value = description
+func (M *ModInfo) SetName(value string) {
+	_ = M.SetValue("name", value)
 }
 
-func (M *ModInfo) SetAuthor(author string) {
-	M.Author.Value = author
+func (M *ModInfo) SetDisplayName(value string) {
+	_ = M.SetValue("displayname", value)
+}
+
+func (M *ModInfo) SetDescription(value string) {
+	_ = M.SetValue("description", value)
+}
+
+func (M *ModInfo) SetAuthor(value string) {
+	_ = M.SetValue("author", value)
 }
 
 func (M *ModInfo) SetVersion(version string, compatibility string) {
-	M.Version.Value = version
-	M.Version.Compat = compatibility
+	_ = M.SetValue("version", version)
+	_ = M.SetValue("compat", compatibility)
 }
 
-func (M *ModInfo) SetWebsite(website string) {
-	M.Website.Value = website
+func (M *ModInfo) SetWebsite(value string) {
+	_ = M.SetValue("website", value)
 }
 
 func (M *ModInfo) SetPath(path string) {
